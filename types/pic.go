@@ -8,5 +8,5 @@ type Pic struct {
 }
 
 func (p *Pic)Save() error {
-
+	return nil
 }

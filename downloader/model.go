@@ -53,13 +53,12 @@ func (m *ModelDownloader) Download() {
 	}
 	go func() {
 		for i := m.beginId; i <= m.endId; i ++ {
-
-
+			ids <- i
 		}
 	}()
 	parserCh := modelFanIn(parserChs...)
 	for p := range parserCh {
-		err = p.Store(m.tableName)
+		_, err = p.Parse()
 		if err != nil {
 			m.err = append(m.err, err)
 		}
@@ -115,6 +114,7 @@ func download(url string, httpClient *http.Client) (string, error) {
 	var err error = nil
 	for i := 0; i < 10; i++ {
 		resp, err := httpClient.Get(url)
+		defer resp.Body.Close()
 		if err != nil && resp != nil {
 			switch resp.StatusCode {
 			case http.StatusOK:
