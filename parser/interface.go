@@ -1,7 +1,5 @@
 package parser
 
 type Parser interface {
-	Parse() (interface{}, error)
+	Parse(res interface{}) error
 }
-
-

@@ -27,8 +27,8 @@ func NewAlbumParser(id uint32, html string) *AlbumParser {
 	}
 }
 
-func (p *AlbumParser) Parse() (interface{}, error) {
-	return nil, nil
+func (p *AlbumParser) Parse(res interface{}) error {
+	return nil
 }
 
 func (p *AlbumParser) Name() string {
@@ -47,12 +47,12 @@ func (p *AlbumParser) Date() time.Time {
 		return time.Time{}
 	}
 	t, err := time.ParseInLocation(constans.DATE, node.Text(), time.Local)
-	if err != nil{
+	if err != nil {
 		return time.Time{}
 	}
 	return t
 }
 
 func (p *AlbumParser) CoverPic() string {
-
+	return ""
 }

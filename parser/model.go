@@ -26,8 +26,8 @@ func NewModelParser(id uint32, html string) *ModelParser {
 	}
 }
 
-func (p *ModelParser) Parse() (interface{}, error) {
-	return nil, nil
+func (p *ModelParser) Parse(res interface{}) (error) {
+	return nil
 }
 
 func (p *ModelParser) Name() string {
